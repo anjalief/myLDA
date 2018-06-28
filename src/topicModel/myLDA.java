@@ -296,8 +296,8 @@ public class myLDA {
 		int num_topics = 50;
 		int max_iter = 10000;
 		
-		String docfileName = "/Users/anjaliefield/plot_summaries_test.tsv";
-		String vocabfileName = "/Users/anjaliefield/vocab_test.tsv";
+		String docfileName = args[0]; //"/Users/anjaliefield/plot_summaries_test.tsv";
+		String vocabfileName = args[1]; //"/Users/anjaliefield/vocab_test.tsv";
 		
 		myLDA tester = new myLDA(num_topics, alpha, beta, max_iter);
 		tester.readData(docfileName, vocabfileName);
