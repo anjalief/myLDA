@@ -1,0 +1,49 @@
+<project name="myLDA" default="all" basedir=".">
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="all" depends="jar"/>
+
+    <target name="init">
+	<!-- Create the time stamp -->
+	<tstamp/>
+	<!-- Create the build directory structure used by compile -->
+		<mkdir dir="build"/>
+	</target>
+
+    <target name="compile" depends="init">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes">
+	    <classpath>
+		<fileset dir="lib">
+		    <include name="*.jar" />
+		</fileset>
+	    </classpath>
+        </javac>
+    </target>
+
+    <target name="hello-jar" depends="compile" description="generate the HelloWorld JAR" >
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/HelloWorld.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="topicModel.HelloWorld"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="jar" depends="compile" description="generate the JAR" >
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/myLDA.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="topicModel.myLDA"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="build/jar/myLDA.jar" fork="true"/>
+    </target>
+
+</project>
