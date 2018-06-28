@@ -1,0 +1,1 @@
+java -cp build/jar/myLDA.jar:lib/* topicModel.myLDA ./data/plot_summaries_test.tsv ./data/vocab_test.tsv
